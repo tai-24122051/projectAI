@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="container">
+  <br />
+  <!-- Form to upload image -->
+  <form action="#" method="POST" enctype="multipart/form-data">
+    <div class="input-group">
+      <input type="file" class="form-control" name="image_name" required />
+      <input type="submit" value="UPLOAD" class="btn btn-outline-secondary" />
+    </div>
+  </form>
+</div>
+
+{% if upload %}
+<div class="container">
+  <br />
+  <!-- Table to display uploaded and predicted images -->
+  <table>
+    <tr>
+      <td>
+        <img
+          class="img-fluid fixed-img"
+          src="/static/upload/{{ upload_image }}"
+          alt="Uploaded Image"
+        />
+      </td>
+      <td>
+        <img
+          class="img-fluid fixed-img"
+          src="/static/predict/{{ upload_image }}"
+          alt="Predicted Image"
+        />
+      </td>
+    </tr>
+  </table>
+
+  <br />
+
+  <!-- Table to display cropped license plate and OCR text -->
+  <table style="border: solid black; width: 100%">
+    <tr style="border: solid black">
+      <th>CROPPED LICENSE PLATE IMAGE</th>
+      <th>TEXT</th>
+    </tr>
+    <tr style="border: solid black">
+      <td>
+        <img class="img-fluid fixed-img" src="/static/roi/{{ upload_image }}" alt="Cropped License Plate" />
+      </td>
+      <td style="background-color: #c1dce0">
+        <h1 class="display-8">{{ text }}</h1>
+      </td>
+    </tr>
+  </table>
+</div>
+{% endif %}
+
+{% endblock %}

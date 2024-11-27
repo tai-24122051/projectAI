@@ -1,0 +1,4 @@
+train: D:/Project_AI/data_images/train
+val: D:/Project_AI/data_images/test
+nc: 1
+names: ['license_plate']
